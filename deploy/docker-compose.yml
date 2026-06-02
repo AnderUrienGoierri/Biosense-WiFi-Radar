@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  sensing-server:
+    image: ruvnet/wifi-densepose:latest
+    ports:
+      # Exposición de la API REST para el dashboard del usuario (Three.js 3D)
+      - "3030:3000"
+      # Exposición de los WebSockets de telemetría dinámica en tiempo real
+      - "3031:3001"
+      # Escucha de tráfico UDP desde el microcontrolador remoto (Para futura fase ESP32)
+      - "5005:5005/udp"
+    environment:
+      # Definir la escucha específica. Usamos modo 'simulated' para pruebas sin hardware, 
+      # ya que 'wifi' dentro de Docker Linux no puede acceder a las librerías nativas de Windows.
+      - CSI_SOURCE=simulated
+      # Ordenar a la aplicación Rust que busque y grabe modelos neuronales en esta ruta interna
+      - MODELS_DIR=/app/models
+    volumes:
+      # MAPEO ESTRUCTURAL CLAVE PARA SINCRONIZACIÓN EN LA NUBE:
+      # Reemplace './../models' con la ruta absoluta a su carpeta de Google Drive si desea sincronización en tiempo real.
+      # Ejemplo: - "C:/Users/anurt/Mi Unidad/Telemetría_Models:/app/models"
+      # Por ahora, usamos la carpeta local 'models' que luego puede ser sincronizada por la app de Google Drive.
+      - ./../models:/app/models
+      # MAPEO DE INTERFAZ GRÁFICA (UI):
+      # Permite modificaciones en vivo del Dashboard (i18n, iconos)
+      - ./../src/ui:/app/ui
