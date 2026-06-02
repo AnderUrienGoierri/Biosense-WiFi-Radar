@@ -37,6 +37,28 @@ La documentación técnica se divide en los siguientes tratados especializados:
     *   Conversión de metadatos espaciales en recursos médicos estandarizados (HL7 FHIR R4).
     *   Flujo de alertas preventivas (Prevención de Caídas, Apneas del Sueño) hacia la red hospitalaria HAPI FHIR.
 
+6.  **[06. Arquitectura y Teoría Analítica (Legacy)](06_ARQUITECTURA_Y_TEORIA_LEGACY.md)**
+    *   Documentación histórica del análisis de requerimientos originales del proyecto.
+
+7.  **[07. Requisitos y Herramientas (DAM)](07_REQUISITOS_Y_HERRAMIENTAS.md)**
+    *   Desglose del utillaje software, compiladores y bibliotecas (NPM, Python, Docker) esenciales.
+
+8.  **[08. Integración Nube y Google Colab](08_INTEGRACION_NUBE_Y_COLAB.md)**
+    *   Flujo de trabajo remoto para entrenamiento de IA usando aceleradoras GPU (NVIDIA T4/A100) externas.
+
+9.  **[09. Personalización UI y Localización](09_PERSONALIZACION_UI_Y_LOCALIZACION.md)**
+    *   Mecánicas de adaptación temática y configuración idiomática base.
+
+10. **[10. Plan de Implementación: Tooltips e I18N Avanzado](10_PLAN_IMPLEMENTACION_TOOLTIPS_I18N.md)**
+    *   Tratado de ingeniería sobre la expansión dinámica del sistema multilingüe (Euskera, Inglés, etc.) y la arquitectura de Tooltips informativos para el HUD.
+
+11. **[11. Plan de Implementación Inicial (Root)](11_PLAN_IMPLEMENTACION_INICIAL.md)**
+    *   Primer documento de diseño arquitectónico trazado al inicio de la fase de desarrollo.
+
+### 📎 Anexos Multimedia y Archivos Adicionales
+*   **[12. Media (Banner/Facebook Post)](12_MEDIA_FB_POST.jpg)**: Material gráfico del proyecto.
+*   **[Proyecto Biomédico RuView_ Análisis e Implementación.pdf](Proyecto%20Biom%C3%A9dico%20RuView_%20An%C3%A1lisis%20e%20Implementaci....pdf)**: Documentación extensa fundacional y whitepaper científico.
+
 ---
 
 ## 🎯 Filosofía del Proyecto
