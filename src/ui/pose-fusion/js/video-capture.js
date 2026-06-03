@@ -15,6 +15,11 @@ export class VideoCapture {
   }
 
   async start(constraints = {}) {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      alert("⚠️ El navegador está bloqueando el acceso a la cámara. Esto ocurre si no estás usando 'localhost' o HTTPS, o si los permisos están denegados por defecto en tu navegador.");
+      return false;
+    }
+
     const defaultConstraints = {
       video: {
         width: { ideal: 640 },
