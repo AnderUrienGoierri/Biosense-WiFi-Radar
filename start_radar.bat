@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 > NUL
 title Lanzador Biosense-WiFi-Radar (Edge Server)
 color 0B
 
@@ -13,7 +14,7 @@ echo.
 cd /d "%~dp0\deploy"
 
 :: Apagar cualquier instancia previa que pudiera haberse quedado colgada
-echo [1/3] Limpiando contenedores huérfanos previos...
+echo [1/3] Limpiando contenedores previos u obsoletos...
 docker-compose down
 
 :: Levantar el nuevo entorno en segundo plano (-d detached)
