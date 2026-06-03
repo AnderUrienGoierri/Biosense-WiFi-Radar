@@ -159,14 +159,14 @@ function init() {
 
 async function startCamera() {
   cameraPrompt.style.display = 'none';
-  const ok = await videoCapture.start();
-  if (ok) {
+  const result = await videoCapture.start();
+  if (result === true) {
     statusDot.classList.remove('offline');
     statusLabel.textContent = 'LIVE';
     resizeCanvases();
   } else {
     cameraPrompt.style.display = 'flex';
-    cameraPrompt.querySelector('p').textContent = 'Camera access denied. Try CSI-only mode.';
+    cameraPrompt.querySelector('p').innerHTML = `<strong>Error de Cámara:</strong> ${result}<br>Asegúrate de que la cámara no esté en uso por otra app (Skype, Teams, OBS).`;
   }
 }
 

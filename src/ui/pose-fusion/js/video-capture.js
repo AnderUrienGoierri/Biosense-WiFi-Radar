@@ -33,7 +33,7 @@ export class VideoCapture {
       return true;
     } catch (err) {
       console.error('[Video] Camera access failed:', err.message);
-      return false;
+      return err.name + ': ' + err.message;
     }
   }
 
