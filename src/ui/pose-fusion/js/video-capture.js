@@ -16,12 +16,7 @@ export class VideoCapture {
 
   async start(constraints = {}) {
     const defaultConstraints = {
-      video: {
-        width: { ideal: 640 },
-        height: { ideal: 480 },
-        facingMode: 'user',
-        frameRate: { ideal: 30 }
-      },
+      video: true,
       audio: false
     };
 
