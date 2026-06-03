@@ -15,11 +15,6 @@ export class VideoCapture {
   }
 
   async start(constraints = {}) {
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      alert("⚠️ El navegador está bloqueando el acceso a la cámara. Esto ocurre si no estás usando 'localhost' o HTTPS, o si los permisos están denegados por defecto en tu navegador.");
-      return false;
-    }
-
     const defaultConstraints = {
       video: {
         width: { ideal: 640 },
@@ -34,26 +29,15 @@ export class VideoCapture {
       this.stream = await navigator.mediaDevices.getUserMedia(
         Object.keys(constraints).length ? constraints : defaultConstraints
       );
-    } catch (err1) {
-      console.warn('[Video] Ideal constraints failed, trying basic {video:true}:', err1.message);
-      try {
-        this.stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-      } catch (err2) {
-        console.error('[Video] Camera access totally failed:', err2.message);
-        return false;
-      }
-    }
-
-    try {
       this.video.srcObject = this.stream;
       await this.video.play();
 
-      this.offscreen.width = this.video.videoWidth || 640;
-      this.offscreen.height = this.video.videoHeight || 480;
+      this.offscreen.width = this.video.videoWidth;
+      this.offscreen.height = this.video.videoHeight;
 
       return true;
     } catch (err) {
-      console.error('[Video] Camera play failed:', err.message);
+      console.error('[Video] Camera access failed:', err.message);
       return false;
     }
   }

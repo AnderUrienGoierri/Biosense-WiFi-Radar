@@ -158,22 +158,15 @@ function init() {
 }
 
 async function startCamera() {
-  console.log('[PoseFusion] startCamera clicked');
-  try {
-    cameraPrompt.style.display = 'none';
-    const ok = await videoCapture.start();
-    if (ok) {
-      statusDot.classList.remove('offline');
-      statusLabel.textContent = 'LIVE';
-      resizeCanvases();
-    } else {
-      cameraPrompt.style.display = 'flex';
-      cameraPrompt.querySelector('p').textContent = 'Camera access denied. Try CSI-only mode.';
-      alert("No se pudo acceder a la cámara. Puede que esté en uso por otra app o bloqueada por el navegador.");
-    }
-  } catch (err) {
-    alert("Error crítico al intentar iniciar la cámara: " + err.message);
-    console.error(err);
+  cameraPrompt.style.display = 'none';
+  const ok = await videoCapture.start();
+  if (ok) {
+    statusDot.classList.remove('offline');
+    statusLabel.textContent = 'LIVE';
+    resizeCanvases();
+  } else {
+    cameraPrompt.style.display = 'flex';
+    cameraPrompt.querySelector('p').textContent = 'Camera access denied. Try CSI-only mode.';
   }
 }
 
